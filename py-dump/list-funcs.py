@@ -1,7 +1,8 @@
 lucky_num = [2, 5, 7, 13, 18, 37]
-friends = ["Tom","Tom", "Tom", "Milsen", "Daniel", "Ella", "Felix"]
+friends = ["Tom","Tom", "Tom", "Milsen", "Daniel","Cyrell", "Ella", "Kayne", "Jon", "Dan"]
 
 friends.append("Way") #append(newvar): adds var
+friends.insert(0, "Jhayjay")
 friends.insert(1, "Ron") #insert(index_num, newvar): adds var on a specific index in a list
 friends.remove("Milsen") #remove(var): removes selected element
 friends.pop() #removes the last element from the list
