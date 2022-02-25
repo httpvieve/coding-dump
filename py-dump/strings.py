@@ -9,6 +9,10 @@ print(len(phrase)) #len(var): counts the number of characters
 print(phrase[0]) # pos 0 -> char in phrase
 print(phrase[7])
 #index func: returns pos num of prompted char (can be a phrase but counts first letter)
-print(phrase.index("Salle")) #syntax -> .index(var)
+print(phrase.index("De")) #syntax -> .index(var)
+z = ['s','z','a','b']
+print(len(z))
+print(z.index('b'))
+print("sasasa" +(z.index('b') )
 #replace func: 
 print(phrase.replace("De La Salle","Adamson")) #syntax -> .replace(newvar,var) 

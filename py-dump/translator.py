@@ -1,4 +1,4 @@
-#Fish language : converts every vowels to w
+        #Fish language : converts every vowels to w
 def translate(phrase):
         translation = ""
         for l in phrase:
