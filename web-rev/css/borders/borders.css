@@ -1,0 +1,35 @@
+body {
+        background-color: burlywood;
+        font-family: source code pro;
+}
+
+h1 {
+        color: #244864;
+}
+p {
+        color: rgb(102, 44, 97);
+        font-family: "jetbrains mono";
+}
+#top_1 {
+        background-color:rgb(151, 128, 173);
+        border-style: groove;
+}
+#top_2 {
+        border-style: outset; 
+        border-color: purple;
+}
+#top_3 {
+        border-style:ridge; 
+        border-radius: 10px;
+}
+#top_4 {
+        border-style:inherit; 
+        border-width: 10px;
+}
+#top_5 {
+        border-style: outset; 
+        padding: 5px;
+}
+#honorable_m {
+
+}

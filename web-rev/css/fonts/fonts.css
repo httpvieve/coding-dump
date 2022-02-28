@@ -1,0 +1,19 @@
+body {
+        background-color: black;
+        font-family: lcdmono2;
+}
+
+h1 {
+        color: #00ff73;
+        text-decoration: beige wavy underline;
+}
+p {
+        color: white;
+        font-family: "jetbrains mono";
+        font-style: italic;
+}
+.idk {
+        color: red;
+        font-weight: bolder;
+        font-size: 19px;
+}
