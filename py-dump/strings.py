@@ -13,6 +13,6 @@ print(phrase.index("De")) #syntax -> .index(var)
 z = ['s','z','a','b']
 print(len(z))
 print(z.index('b'))
-print("sasasa" +(z.index('b') )
+print("sasasa" +(z.index('b') ))
 #replace func: 
 print(phrase.replace("De La Salle","Adamson")) #syntax -> .replace(newvar,var) 
