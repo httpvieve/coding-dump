@@ -1,4 +1,4 @@
-lucky_num = [2, 5, 7, 13, 18, 37]
+lucky_num = [2, 5, 7, 13, 18, 37, 4,3,3,2]
 friends = ["Tom","Tom", "Tom", "Milsen", "Daniel","Cyrell", "Ella", "Kayne", "Jon", "Dan"]
 
 friends.append("Way") #append(newvar): adds var
@@ -13,6 +13,7 @@ print(friends.count("Tom")) #count the number of times an element is provided in
 friends.sort() #arrange the list in alphabetical order for strings, ascending for num
 lucky_num.sort() #ascending order
 lucky_num.reverse() #descending order
+print(lucky_num)
 
 mutuals = friends.copy() #duplicates/copies list elements
 print(mutuals)
@@ -21,7 +22,3 @@ friends.extend(lucky_num) #list1.extend(list2): combines lists
 friends.clear() #clear(): resets the list
 print(friends)
 
-int a;
-for (a = 2; a <= max_val; a++){
-        if (a)
-}

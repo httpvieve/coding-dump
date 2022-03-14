@@ -31,5 +31,6 @@ p {
         padding: 5px;
 }
 #honorable_m {
-
+        border-style: outset; 
+        padding: 5px;
 }
