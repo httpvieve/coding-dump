@@ -40,13 +40,12 @@ int main ()
                 //writing the array as a whole
         */
        // READING FILES 
-       /*
+       
         int x;
         source = fopen("sample.dat", "rb");
         fread (&x, sizeof(int), 1, source);
         printf("Value of x : %d", x);
-        */
-       /*
+
         char ch;
         int i;
         float f;
@@ -62,34 +61,34 @@ int main ()
         printf("Value of i : %d\n", i);
         printf("Value of f : %f\n", f);
         printf("Value of d : %f\n", d);
-        */
-       //WRITING STRUCTS
-        student A;
-        student B[100];
-
-        A.ID = 121;
-        strcpy(A.name.Last, "Huang");
-        strcpy(A.name.First, "Renjun");
-        A.grade = 4.0;
-
-        B[0].ID = 121;
-        strcpy(B[0].name.Last, "Filbert");
-        strcpy(B[0].name.First, "Gonzales");
-        B[0].grade = 3.0;
-
-        source = fopen ("struct.dat", "wb");
-        fwrite (&A, sizeof(student), 1, source);
-        fwrite (&B, sizeof(student), 100, source);
-
-        fprintf (stdout, "%d\n", A.ID);
-        fprintf (stdout, "%s ", A.name.First);
-        fprintf (stdout, "%s\n", A.name.Last);
-        fprintf (stdout, "%f\n", A.grade);
         
-        fprintf (stdout, "%d\n", B[0].ID);
-        fprintf (stdout, "%s ", B[0].name.First);
-        fprintf (stdout, "%s\n", B[0].name.Last);
-        fprintf (stdout, "%f\n", B[0].grade);
+       //WRITING STRUCTS
+        // student A;
+        // student B[100];
+
+        // A.ID = 121;
+        // strcpy(A.name.Last, "Huang");
+        // strcpy(A.name.First, "Renjun");
+        // A.grade = 4.0;
+
+        // B[0].ID = 121;
+        // strcpy(B[0].name.Last, "Filbert");
+        // strcpy(B[0].name.First, "Gonzales");
+        // B[0].grade = 3.0;
+
+        // source = fopen ("struct.dat", "wb");
+        // fwrite (&A, sizeof(student), 1, source);
+        // fwrite (&B, sizeof(student), 100, source);
+
+        // fprintf (stdout, "%d\n", A.ID);
+        // fprintf (stdout, "%s ", A.name.First);
+        // fprintf (stdout, "%s\n", A.name.Last);
+        // fprintf (stdout, "%f\n", A.grade);
+        
+        // fprintf (stdout, "%d\n", B[0].ID);
+        // fprintf (stdout, "%s ", B[0].name.First);
+        // fprintf (stdout, "%s\n", B[0].name.Last);
+        // fprintf (stdout, "%f\n", B[0].grade);
         
         fclose (source);
         return 0;
