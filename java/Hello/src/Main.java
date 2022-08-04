@@ -6,6 +6,8 @@ public class Main {
                 int hoes = 37;
                 hoes++; // all similar syntax to c
                 System.out.println(hoes);
+                String best_boy = "Huang " + "Renjun";
+                System.out.println(best_boy);
 
         }
         /*
