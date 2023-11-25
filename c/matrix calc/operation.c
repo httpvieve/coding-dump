@@ -92,3 +92,16 @@ Data MatrixProduct (Data array_1, Data array_2) {
 
         return product;
 }
+
+Data Transpose (Data array) {
+        Data newData;
+        newData.row_no = array.column_no;
+        newData.column_no = array.row_no;
+        int row, column;
+        for (row = 0; row < newData.row_no; row++) 
+                for (column = 0; column < newData.column_no; column++)
+                        newData.entry[row][column] = array.entry[column][row];
+        
+        
+        return newData;
+}

@@ -7,29 +7,34 @@ void OperationMenu (Matrix array) {
                 AllMatrices(array, max_rows);
                 BORDER; printf ("\n%sPlease select an operation.%s\n", PURPLE, RESET); 
                 printf ("\n\t[1] Addition\n");
-                printf ("\t[2] Scalar Multiplication\n");
-                printf ("\t[3] Matrix Multiplication\n");
-                printf ("\t[4] Simultaneous Operation\n");
+                printf ("\t[2] Transpose\n");
+                printf ("\t[3] Scalar Multiplication\n");
+                printf ("\t[4] Matrix Multiplication\n");
+                printf ("\t[5] Simultaneous Operation\n");
                 printf ("\t%s\n", RETURN); 
-                nChoice = promptChoice (0, 4);
+                nChoice = promptChoice (0, 5);
+                
                 switch (nChoice){
                 case ADDITION:
                         AdditionMenu (array);
                 break;
-                case 2:
+                case TRANSPOSE:
+                        TransposeMenu (array);
+                break;
+                case SCALAR_PROD:
                         ScalarProductMenu (array);
                 break;
-                case 3:
+                case MATRIX_PROD:
                         MatrixProductMenu (array);
                 break;
-                case 4:
+                case SIMULTANEOUS:
                         // WIP
                 break;
                 default:
                 break;
                 }
         } while (!(nChoice == EXIT));
-       
+        
 }
 void AdditionMenu (Matrix array) {
         int i, max_rows = GetMaxRows (array), index1, index2, key = INVALID;
@@ -56,7 +61,25 @@ void AdditionMenu (Matrix array) {
         BORDER; printf ("\nPress any key to continue...");
         getch();
 }
+void TransposeMenu (Matrix array) {
+        int i, max_rows = GetMaxRows (array), index;
+        Data newData;
+        system("cls");
+        AllMatrices(array, max_rows);
+        BORDER; printf ("\n%sSelect a matrix: %s\n", PURPLE, RESET); 
+        for (i = 1; i < array.count + 1; i++) printf ("\n\t[%d] Matrix %c (%d x %d)", i, ALPHA_CONV(i), array.data[i].row_no, array.data[i].column_no);
+        printf ("\n");
 
+        index = promptChoice (1, array.count);
+
+        system("cls");
+        AllMatrices(array, max_rows);
+        newData = Transpose (array.data[index]);
+        printf ("%s%c\' = %s\n", PURPLE, ALPHA_CONV(index), RESET); 
+        DisplayMatrix(&newData, FALSE, INVALID, INVALID);
+        BORDER; printf ("\nPress any key to continue...");
+        getch();
+}
 void ScalarProductMenu (Matrix array) {
         int i, max_rows = GetMaxRows (array), index;
         float constant;

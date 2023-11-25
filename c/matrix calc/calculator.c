@@ -100,7 +100,7 @@ int main ()
                 printf ("\t%s\n", "[5]\tSolve matrices"); 
                 printf ("\t%s\n", EXIT_PROGRAM); BORDER;
                 printf ("\n");
-                nChoice = promptChoice (0, 5);
+                nChoice = promptChoice (0, 6);
                 switch (nChoice){
                 case 1:
                         matrixData = AddNewMatrix (matrixData);
@@ -123,4 +123,4 @@ int main ()
         } while (!(nChoice == EXIT));
        
         return 0;
-}
+} 

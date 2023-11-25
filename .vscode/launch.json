@@ -12,17 +12,13 @@
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
-      "args": [
-        ""
-      ],
+      "args": [],
       "stopAtEntry": false,
-      "cwd": "c:/Users/Vieve/Desktop/project-euler",
-      "environment": [],
-      "program": "c:/Users/Vieve/Desktop/project-euler/build/Debug/outDebug",
-      "internalConsoleOptions": "openOnSessionStart",
+      "externalConsole": true,
+      "cwd": "c:/Users/Vieve/Documents/GitHub/coding-dump/c/hash_table",
+      "program": "c:/Users/Vieve/Documents/GitHub/coding-dump/c/hash_table/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
-      "externalConsole": false,
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",

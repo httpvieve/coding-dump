@@ -31,9 +31,10 @@
 enum Mode { 
         EXIT = 0,
         ADDITION = 1,
-        SCALAR_PROD = 2,
-        MATRIX_PROD = 3,
-        SIMULTANEOUS = 4
+        TRANSPOSE = 2,
+        SCALAR_PROD = 3,
+        MATRIX_PROD = 4,
+        SIMULTANEOUS = 5
 };
 
 typedef struct Data {
@@ -54,6 +55,7 @@ int isValid (Data array_1, Data array_2, int nMode);
 void LoadingPhrase (int seconds);
 void OperationMenu (Matrix array);
 void AdditionMenu (Matrix array);
+void TransposeMenu (Matrix array);
 void ScalarProductMenu (Matrix array);
 void MatrixProductMenu (Matrix array);
 void AllMatrices (Matrix array, int max_rows);
@@ -63,6 +65,7 @@ void DisplayMatrix (Data *input, int isSingleEntry, int row, int column);
 void DisplayAllMatrices (Matrix array, int inSelectingMode, int choice);
 
 Data Sum (Data array_1, Data array_2);
+Data Transpose (Data array);
 Data ScalarProduct (Data array, float constant);
 Data MatrixProduct (Data array_1, Data array_2);
 Data Initialize (Data input, int count);
