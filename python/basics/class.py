@@ -1,7 +1,7 @@
 # inclusion 
 # using class from another file <syntax> :
 # from <file_name> import <Class_name>
-from student import Student
+from python.basics.student import Student
 
 student1 = Student("Bob", 19);
 # calling a method from a class <syntax> :

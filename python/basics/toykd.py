@@ -17,10 +17,11 @@ import string
 word = input()
 nShift = input()
 shiftedstr = ""
+letter = ""
 for i in range (len(word)):
   if word[i] in string.ascii_lowercase or letter in string.ascii_uppercase:
     if len(word) - word.index[i] < nShift:
-      shiftedchr = ord(word[(word.index[i] + nShift) % len(word)] + nShift
+      shiftedchr = ord(word[(word.index[i] + nShift) % len(word)] + nShift)
     shiftedchr = ord(letter) + nShift
     shiftedstr += chr(shiftedchr)
   else:

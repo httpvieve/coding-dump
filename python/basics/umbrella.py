@@ -14,7 +14,7 @@ limit = game[3]
 zombie_dmg = game[4]
 
 # goal = vaccine
-MISSION = 
+MISSION = 0
 hit_points = 9
 pistol_dmg = 1
 
@@ -23,9 +23,7 @@ while MISSION == False:
                 if clip_size == 0:
                         clip_size = game[1]
                 # else
-                
-                if 
-                        
+  
                 
                         
                         

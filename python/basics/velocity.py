@@ -9,7 +9,7 @@ def kangaroo(x1, v1, x2, v2):
         if x1 + a * i == x2 + b * i:
             res = "YES"
         i+=1
-    return result
+    return res
 
     first_multiple_input = input().rstrip().split()
 
