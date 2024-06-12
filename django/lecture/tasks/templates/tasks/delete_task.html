@@ -1,0 +1,10 @@
+{% comment %} {% extends "tasks/layout.html" %}
+{% block body %}
+        <h1>Remove task:</h1>
+        <form action= "{% url 'tasks:delete_task'%}" method="GET">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit">
+        </form>
+        <a href="{% url 'tasks:index' %}">View tasks</a>
+{% endblock %} {% endcomment %}

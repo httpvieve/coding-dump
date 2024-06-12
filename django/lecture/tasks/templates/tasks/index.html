@@ -1,0 +1,16 @@
+{% extends "tasks/layout.html" %}
+{% block body %}
+        <h1>Tasks</h1>
+        <ul>
+                {% for todo in tasks %}
+                        <li> {{ todo }}</li>
+                {% empty %}
+                        <p>No tasks</p>
+                {% endfor %}
+        </ul>
+        {% comment %} <a href="/tasks/add">Add a new task</a>  {% endcomment %}
+        <a href="{% url 'tasks:add' %}">Add a new task</a>
+        {% comment %} {% if tasks|length > 0 %}
+                <a href="{% url 'tasks:delete_task' %}">Delete a task</a>
+        {% endif %} {% endcomment %}
+{% endblock %}
