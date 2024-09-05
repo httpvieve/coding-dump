@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+  Search | {{title}}
+{% endblock %}
+
+{% block body %}
+        <br>
+        <h4> ⌛ Showing results for <strong> {{title}}  </strong>.. </h3>
+        <br>
+        <ul>
+        {% for valid in results %}
+                <li><a href={%url 'entry_page' valid %}>{{ valid }}</a></li>
+        {% empty %}
+                <p>{{error_msg}} </p>
+        {% endfor %}
+    </ul> 
+
+{% endblock %}
