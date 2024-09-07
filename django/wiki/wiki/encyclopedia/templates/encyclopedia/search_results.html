@@ -6,14 +6,30 @@
 
 {% block body %}
         <br>
-        <h4> ⌛ Showing results for <strong> {{title}}  </strong>.. </h3>
+        <ul >
+                <h1 class="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-3xl dark:text-white">₊ ⊹  ⌛ Showing results for  <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">c{{title}}</mark>..</h1>
+        {% comment %} <h2> ₊ ⊹  ⌛ Showing results for <strong> {{title}}  </strong>.. </h2> {% endcomment %}
+        {% if is_found %}
+                <li class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400"><a href={%url 'entry_page' exact_result %}><strong>{{exact_result}}</strong></a></li>
+        {% else%}
+                <p> The page "{{title}}" does not exist. </p>
+        {% endif %}
+        {% if has_relevant %}
         <br>
-        <ul>
+        <p class="text-gray-500 dark:text-gray-400">You can  <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline"> create a draft and submit it for review </a>or request that a redirect be created, but consider checking the search results below to see whether the topic is already covered.  </p>
+        <h5>📚 Relevant results for  <strong> {{title}}</strong>..</h5>
+        
+        
         {% for valid in results %}
-                <li><a href={%url 'entry_page' valid %}>{{ valid }}</a></li>
-        {% empty %}
-                <p>{{error_msg}} </p>
+        <li class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400"><a href={%url 'entry_page' valid %}><strong>{{ valid }}</strong></a></li>
         {% endfor %}
+        {% else %}
+        {% if not is_found %}
+        <p>{{error_msg}} </p>
+        {% endif %}
+        {% endif %}
+
+        
     </ul> 
 
 {% endblock %}

@@ -5,12 +5,18 @@
 {% endblock %}
 
 {% block body %}
-    <h1>All Pages</h1>
+<br>
+<br>
 
-    <ul>
+<h2 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">All Pages</h2>
+ 
+    <ul class="max-w-md text-gray-500 list-disc list-inside dark:text-gray-400 text-lg font-medium" >
+
         {% for entry in entries %}
-            <li><a href={%url 'entry_page' entry%}>{{ entry }}</a></li>
+            <li ><a href={%url 'entry_page' entry%} >  {{ entry }}</a></li>
+
         {% endfor %}
+
     </ul>
 
 {% endblock %}

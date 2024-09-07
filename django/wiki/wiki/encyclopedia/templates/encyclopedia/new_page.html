@@ -1,14 +1,22 @@
+
 {% extends "encyclopedia/layout.html" %}
+{% load tailwind_filters %}
 
 {% block title %}
-
 {{title}}
 {% endblock %}
 
 {% block body %}
+<br>
+<h3> 📝 Adding new entry.. </h3>
+<p class="text-gray-500 dark:text-gray-400">For more information on Markdown syntax and formatting, please refer to GitHub's official documentation:  <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Link to GitHub's Markdown Guide.</a> </p>
+
     <form action="{% url 'new_page' %}" method="post">
         {% csrf_token %}
-       {{form}}
-        <input type="submit" value="Add">
+
+       {{form|crispy}}
+
+       <button type="submit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Add</button>
+        {% comment %} <input type="submit" value="Add"> {% endcomment %}
      </form>
 {% endblock %}

@@ -1,40 +1,20 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
-from django import forms
+
 from django.urls import reverse
 import markdown2
+from encyclopedia.forms import EntryForm, ModifyEntry
 
 from . import util
 import random as randomize
 
 valid_entries =  util.list_entries()
 
-_DUPLICATE = 1
-_INVALID_SEARCH = 2
-_DOES_NOT_EXIST = 3
+_DUPLICATE = "📄 The article you're trying to create already exists."
+_INVALID_SEARCH = " ❌ We couldn't find any relevant results for your search."
+_DOES_NOT_EXIST = " ❌ The page you requested could not be found."
 
 
-def define_error (error_type):
-    if error_type == _INVALID_SEARCH:
-        return " ❌ We couldn't find any results for your search."
-    if error_type == _DUPLICATE:
-        return "📄 The article you're trying to create already exists."
-    if error_type == _DOES_NOT_EXIST:
-                return " ❌ The page you requested could not be found."
-          
-# class EntryForm (forms.Form):
-#     class Meta:
-#         model = Entry
-#         fields = ['title', 'content']          
-
-class ModifyEntry (forms.Form):
-    modified_content = forms.CharField(widget=forms.Textarea)
-
-class EntryForm (forms.Form):
-        
-    title = forms.CharField (label="Title: ")
-    content = forms.CharField(label="Content:", widget=forms.Textarea)
-    
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
@@ -44,8 +24,9 @@ def index(request):
 def entry_page (request, title):
     entry_title = util.get_entry(title)
     if entry_title == None:
-        return render (request, "encyclopedia/invalid.html", 
-                {"error_msg": define_error(_DOES_NOT_EXIST)})
+        return render (request, "encyclopedia/invalid.html", {
+            "error_msg": _DOES_NOT_EXIST
+    })
     else:
         return render(request, "encyclopedia/entry_page.html", {
             "page": markdown2.markdown (entry_title),
@@ -57,18 +38,33 @@ def random_page (request):
             return redirect(reverse('entry_page', args=[random_entry]))
         
 def search_entry (request):
+            
+    is_found = False
+    has_relevant = False
+
     if request.method == "GET":
         keyword = request.GET['q']
         valid_results = []
         valid_entries = util.list_entries()
+        exact_result = keyword
+            
         for result in valid_entries:
-            if keyword.lower() in result.lower():
-                valid_results.append(result)
+            if keyword.lower().strip() == result.lower().strip():
+                        is_found = True
+                        exact_result = result
+            else:
+                if keyword.lower().strip() in result.lower().strip() :
+                    valid_results.append(result)
+        if len(valid_results) > 0:
+            has_relevant = True
 
         return render(request, "encyclopedia/search_results.html", {
+            "has_relevant": has_relevant,
+            "is_found": is_found,
+            "exact_result" : exact_result,
             "results": valid_results,
             "title": keyword,
-            "error_msg": define_error(_INVALID_SEARCH)
+            "error_msg": _INVALID_SEARCH
      })
 
 def new_page (request):
@@ -79,16 +75,17 @@ def new_page (request):
         
         if data.is_valid():
             if util.get_entry(title) != None:
-                return render (request, "encyclopedia/invalid.html", 
-                {"error_msg": define_error(_DUPLICATE)})
+                return render (request, "encyclopedia/invalid.html", {
+                    "error_msg": _DUPLICATE
+            })
             else: 
                 content = "# " + title + " \n\n" + content
-                util.save_entry(title, content) # add entry
-                # return redirect(reverse('index'))
+                util.save_entry(title, content) 
                 return render(request, "encyclopedia/entry_page.html", {
-                "page": markdown2.markdown (util.get_entry(title)),
-                "title": title
-        })
+                    "page": markdown2.markdown (util.get_entry(title)),
+                    "title": title
+            })
+                
     return render(request, "encyclopedia/new_page.html",{
     "form": EntryForm()
     })
@@ -97,22 +94,23 @@ def new_page (request):
             
 def modify_page (request, title):
             
-    initial_data = {
+    initial_content = {
         'modified_content' : util.get_entry(title)
     }
     
     if request.method == "GET":
         return render(request, "encyclopedia/modify_page.html", {
-                "title": title,
-                "form": ModifyEntry(initial=initial_data),
-                "page": markdown2.markdown (util.get_entry(title)),
-                })
+            "title": title,
+            "form": ModifyEntry(initial=initial_content),
+            "page": markdown2.markdown (util.get_entry(title)),
+    })
         
     if request.method == "POST":
-        updated = request.POST['modified_content'].strip()
-        # form = ModifyEntry(initial=initial_data)
-        # if form.is_valid():
-        # updated = form.cleaned_data['modified_content']
-        util.save_entry(title, updated)
+        form = ModifyEntry(request.POST)
+        if form.is_valid():   
+            updated = form.cleaned_data['modified_content']
+            if ("# " + title) not in updated:
+                updated = "# " + title + " \n\n" + updated
+            util.save_entry(title, updated)
         return redirect(reverse('entry_page', args=[title]))
         

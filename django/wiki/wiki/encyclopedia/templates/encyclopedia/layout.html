@@ -5,24 +5,30 @@
 <html lang="en">
     <head>
         <title>{% block title %}{% endblock %}</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <br>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
     </head>
     <body>
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
-                <h2>📖 Wiki</h2>
+                
+            <h1 class="flex items-center text-5xl font-bold dark:text-white">📖Wiki<span class="bg-blue-100 text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-2">CS50W</span></h1>
+
+                {% comment %} <h2>📖 Wiki</h2> {% endcomment %}
                 <br>
                 <form action="{% url 'search' %}">
                     <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
                 </form>
-                <div>
+            
+                <div class="text-l font-medium text-gray-900 dark:text-white" >
                     <a href="{% url 'index' %}">Home</a>
                 </div>
-                <div>
+                <div class="text-l font-medium text-gray-900 dark:text-white">
                     <a href="{% url 'new_page' %}">Create New Page</a>
                 </div>
-                <div>
+                <div class="text-l font-medium text-gray-900 dark:text-white">
                     <a href="{% url 'random'%}">Random Page</a> 
                 </div>
                 {% block nav %}
