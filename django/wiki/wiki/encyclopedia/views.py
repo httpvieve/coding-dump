@@ -38,30 +38,23 @@ def random_page (request):
             return redirect(reverse('entry_page', args=[random_entry]))
         
 def search_entry (request):
-            
-    is_found = False
     has_relevant = False
-
     if request.method == "GET":
         keyword = request.GET['q']
         valid_results = []
         valid_entries = util.list_entries()
-        exact_result = keyword
             
         for result in valid_entries:
             if keyword.lower().strip() == result.lower().strip():
-                        is_found = True
-                        exact_result = result
+                return redirect(reverse('entry_page', args=[result]))
             else:
                 if keyword.lower().strip() in result.lower().strip() :
                     valid_results.append(result)
-        if len(valid_results) > 0:
-            has_relevant = True
-
+        if len(valid_results) > 0 :
+                has_relevant = True
         return render(request, "encyclopedia/search_results.html", {
+            "is_found": False,
             "has_relevant": has_relevant,
-            "is_found": is_found,
-            "exact_result" : exact_result,
             "results": valid_results,
             "title": keyword,
             "error_msg": _INVALID_SEARCH
