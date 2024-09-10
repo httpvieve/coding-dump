@@ -1,0 +1,13 @@
+{% extends "users/layout.html" %}
+
+{% block body %}
+
+        {% endif %}
+        <h1 class="text-6xl font-bold dark:text-white" >Welcome {{ request.user.first_name }} 🐱!</h1>
+
+        <ul>
+                <li>Username: {{ request.user.username }}</li>
+                <li>Email: {{ request.user.email }}</li>
+        </ul>
+
+{% endblock %}
