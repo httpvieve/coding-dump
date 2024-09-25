@@ -1,32 +1,30 @@
 {% extends "flights/layout.html" %}
 
 {% block body %}
-        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"> Flight <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">{{flight.id}}</mark></h1>
+        <h1> Flight {{flight.id}}</h1>
 
         <ul> 
-                <li><p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Origin: {{flight.origin}}</p></li>
-                <li><p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Destination: {{flight.destination}}</p></li>
-                <li><p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Duration: {{flight.duration}} minutes</p></li>
-                <li><p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Passengers: </p>
+                <li><p>Origin: {{flight.origin}}</p></li>
+                <li><p>Destination: {{flight.destination}}</p></li>
+                <li><p>Duration: {{flight.duration}} minutes</p></li>
+                <li><p>Passengers: </p>
                         {% for person in passengers %}
-                        
-                        <li> <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">{{person}} </p> </li>
+                        <li> <p>{{person}} </p> </li>
                         {% empty %}
-                        <li> <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">No passengers.</p> </li>
+                        <li> <p>No passengers.</p> </li>
                         {% endfor %}
                 </li>
         </ul>
-        <br>
-        {% comment %} <h3 class="text-3xl font-bold dark:text-white">Add a passenger</h3> {% endcomment %}
-        <form class="max-w-sm mx-auto" action="{% url 'book' flight.id %}" method="post">
-        {% csrf_token %}
-        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a passenger</label>
-                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="passenger">
+        
+        <form action="{% url 'book' flight.id %}" method="post">
+         
+        <label for="countries">Select a passenger</label>
+                <select name="passenger">
                         {% for passenger in non_passengers %}
                                 <option value="{{ passenger.id }}">{{passenger}}</option>
                         {% endfor %}
                 </select>
-                <button type="submit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Select</button>
+                <button type="submit">Select</button>
         </form>
         <br>
         <a href="{% url 'index' %}">Back to Flight list</a>

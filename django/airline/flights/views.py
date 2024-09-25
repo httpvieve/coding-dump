@@ -17,6 +17,7 @@ def flight (request, flight_id):
                 "passengers": flight.passengers.all(),
                 "non_passengers": Passenger.objects.exclude(flights=flight).all()
         })
+        
 def book (request, flight_id):
         if request.method == "POST":
                 flight = Flight.objects.get("pk=flight_id")
